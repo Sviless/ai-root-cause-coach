@@ -1,0 +1,20 @@
+# Environment / secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
+# Local database and exported files
+data/*.db
+outputs/*
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
