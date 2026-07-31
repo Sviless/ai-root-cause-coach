@@ -251,3 +251,9 @@ Use any of the resume bullets above. In short: *a portfolio-safe, local-first
 operational excellence tool that applies Lean problem-solving (5 Whys, fishbone,
 A3) with transparent confidence, maturity, and recurrence-risk scoring, built in
 Python/Streamlit/SQLite and architected for a future LLM-enhanced mode.*
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) © 2026 Gustavo Angulo.
