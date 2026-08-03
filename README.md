@@ -2,6 +2,12 @@
 
 [![Live Demo](https://img.shields.io/badge/%E2%96%B6%20Live%20Demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://ai-root-cause-coach.streamlit.app/)
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.32%2B-FF4B4B?logo=streamlit&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Last Commit](https://img.shields.io/github/last-commit/Sviless/ai-root-cause-coach)
+![Code Size](https://img.shields.io/github/languages/code-size/Sviless/ai-root-cause-coach)
+
 **▶️ Try it live: https://ai-root-cause-coach.streamlit.app/**
 
 Turn vague operational, engineering, quality, process, or productivity problems
