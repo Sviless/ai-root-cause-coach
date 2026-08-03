@@ -1,5 +1,9 @@
 # 🧭 AI Root Cause Coach
 
+[![Live Demo](https://img.shields.io/badge/%E2%96%B6%20Live%20Demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://ai-root-cause-coach.streamlit.app/)
+
+**▶️ Try it live: https://ai-root-cause-coach.streamlit.app/**
+
 Turn vague operational, engineering, quality, process, or productivity problems
 into a structured, evidence-based root cause analysis — locally, with no API key
 required.
