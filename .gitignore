@@ -3,6 +3,9 @@
 .env.*
 !.env.example
 
+# Streamlit secrets — never commit; keep config.toml tracked
+.streamlit/secrets.toml
+
 # Local database and exported files
 data/*.db
 outputs/*
