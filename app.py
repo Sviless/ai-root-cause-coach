@@ -455,8 +455,8 @@ def main():
             index=0 if st.session_state.gen_mode == MODE_TEMPLATE else 1,
             help=(
                 "Template Engine Mode runs fully locally with no API key. "
-                "LLM Enhanced Mode is future-ready and falls back to Template "
-                "Engine Mode when no LLM_API_KEY is configured."
+                "LLM Enhanced Mode uses Google Gemini when GEMINI_API_KEY is "
+                "configured, and falls back to Template Engine Mode otherwise."
             ),
         )
         st.session_state.gen_mode = requested_mode

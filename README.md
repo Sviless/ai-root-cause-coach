@@ -129,14 +129,16 @@ without changing the UI, exporters, or storage.
   categories, and A3 templates.
 - Portfolio-safe and fully offline.
 
-**LLM Enhanced Mode** (future-ready)
-- Future-ready architecture; reads an `LLM_API_KEY` from the environment.
-- Provider-neutral so it can later connect to OpenAI, Azure OpenAI, Claude, or
-  another LLM provider.
-- **Not required for the application to run.** If no `LLM_API_KEY` is
-  configured, the app automatically falls back to Template Engine Mode and shows
-  a friendly notice. No external API call is made yet — the single place to add
-  one is `_call_llm()` in `src/providers/llm_provider.py`.
+**LLM Enhanced Mode** (Google Gemini)
+- Uses **Google Gemini** to generate the analysis when a `GEMINI_API_KEY` is
+  configured. The Gemini output is mapped into the same package shape used by
+  the UI and exporters, while **scores stay computed locally** for transparency.
+- Provider architecture is provider-neutral (OpenAI, Azure OpenAI, Claude can be
+  added later); only Gemini is wired to a live API today.
+- **Not required for the application to run.** If no key is configured, or if
+  the API call fails for any reason, the app automatically falls back to
+  Template Engine Mode and shows a friendly notice. The Gemini call uses only
+  the Python standard library — no extra dependency.
 
 ### Run in Template Engine Mode
 
@@ -144,14 +146,19 @@ without changing the UI, exporters, or storage.
 streamlit run app.py
 ```
 
-### Prepare for LLM Enhanced Mode
+### Enable LLM Enhanced Mode with Gemini
 
-Create a `.env` file (copy from `.env.example`) or set an environment variable:
+1. Get a free API key from **Google AI Studio**:
+   https://aistudio.google.com/app/apikey
+2. Create a `.env` file (copy from `.env.example`) or set an environment
+   variable:
 
 ```
-LLM_API_KEY=your_key_here
-LLM_PROVIDER=openai   # or azure, claude, ...
+GEMINI_API_KEY=your_key_here
+# optional: GEMINI_MODEL=gemini-1.5-flash
 ```
+
+3. Run the app and select **LLM Enhanced Mode** in the sidebar.
 
 > **Important:** Do not include a real key in the repository and do not commit
 > `.env` files. `.env` is already listed in `.gitignore`. The API key is never

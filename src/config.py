@@ -42,18 +42,42 @@ _load_dotenv()
 
 
 def has_llm_api_key():
-    """True when an LLM_API_KEY is configured. The key itself is never exposed."""
-    return bool(os.getenv("LLM_API_KEY", "").strip())
+    """True when an LLM API key is configured. The key itself is never exposed."""
+    return bool(_read_llm_api_key())
+
+
+def _read_llm_api_key():
+    """Internal: return the configured LLM API key (GEMINI_API_KEY or LLM_API_KEY).
+
+    Kept private so the key is only read where a request is actually made. It is
+    never printed, logged, or returned by any public helper.
+    """
+    return (
+        os.getenv("GEMINI_API_KEY", "").strip()
+        or os.getenv("LLM_API_KEY", "").strip()
+    )
 
 
 def get_llm_provider_name():
-    """Provider-neutral name for a future integration (openai, azure, claude...)."""
-    return os.getenv("LLM_PROVIDER", "openai").strip() or "openai"
+    """Selected LLM provider: gemini | openai | azure | claude.
+
+    If LLM_PROVIDER is set it wins. Otherwise, when only a GEMINI_API_KEY is
+    present the provider defaults to "gemini" so the app works out of the box.
+    """
+    explicit = os.getenv("LLM_PROVIDER", "").strip().lower()
+    if explicit:
+        return explicit
+    if os.getenv("GEMINI_API_KEY", "").strip():
+        return "gemini"
+    return "openai"
 
 
 def get_llm_model():
-    """Optional model name for a future integration."""
-    return os.getenv("LLM_MODEL", "").strip()
+    """Optional model name (LLM_MODEL or GEMINI_MODEL); empty means provider default."""
+    return (
+        os.getenv("LLM_MODEL", "").strip()
+        or os.getenv("GEMINI_MODEL", "").strip()
+    )
 
 
 def resolve_mode(requested):
